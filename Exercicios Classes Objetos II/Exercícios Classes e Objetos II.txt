@@ -1,0 +1,290 @@
+Exercícios Classes e Objetos II
+Nome: Gabriel Belinski Salomão
+
+Exercício 1:
+
+Classe Livro:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class Livro {
+
+    private String titulo, autor;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setTitulo(String titulo1) {
+        titulo = titulo1;
+    }
+
+    public void setAutor(String autor1) {
+        autor = autor1;
+    }
+
+    public void exibeDados() {
+        System.out.println("Titulo: " + titulo);
+        System.out.println("Autor: " + autor);
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Classe TestaLivro:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class TestaLivro {
+    public static void main (String[] args) {
+        Livro livro1 = new Livro();
+        livro1.setAutor("Fernando Pessoa");
+        livro1.setTitulo("Navegar é preciso");
+
+        System.out.println("Titulo: " + livro1.getTitulo());
+        System.out.println("Autor: " + livro1.getAutor());
+
+        livro1.exibeDados();
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 2:
+
+Classe Turma:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class Turma {
+
+    private String curso, disciplina;
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    public void setCurso(String curso1) {
+        curso = curso1;
+    }
+
+    public void setDisciplina(String disciplina1) {
+        disciplina = disciplina1;
+    }
+
+    public void printaDados(){
+        System.out.println("Curso: " + curso);
+        System.out.println("Disciplina: " + disciplina);
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Classe TesteTurma:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class TesteTurma {
+    
+    public static void main(String[] args) {
+
+        Turma turma1 = new Turma();
+        turma1.setCurso("Ciência da Computação");
+        turma1.setDisciplina("POO I");
+
+        Turma turma2 = new Turma();
+        turma2.setCurso("Biologia");
+        turma2.setDisciplina("Zoologia");
+
+        turma1.printaDados();
+        System.out.println();
+        turma2.printaDados();
+
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 3:
+
+Classe Java:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class Java {
+    
+    private String nome;
+
+    public Java(String string) {
+        nome = string;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Classe JavaApp:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class JavaApp {
+    public static void main (String[] args){
+
+        Java javaObj = new Java("Java 11");
+
+        System.out.println(javaObj.getNome());
+ }
+ }
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 4:
+
+Classe Conta:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class Conta {
+    private double saldo;
+    public Conta (double saldoInicial) {
+        if (saldoInicial > 0.0)
+            saldo = saldoInicial;
+        else
+            saldo = 0.0;
+    }
+    public double getSaldo() {
+        return saldo;
+    }
+    public void creditar (double quantia) {
+        saldo += quantia;
+    }
+
+    // insira aqui o método debitar
+
+    public void debitar (double quantia) {
+        if (quantia > saldo){
+            System.out.println("Quantia de débito excedeu o saldo da conta\n");
+            return;
+        }
+        saldo -= quantia;
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Classe UsaConta:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class UsaConta
+{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Conta conta1 = new Conta (1000.00);
+        Conta conta2 = new Conta (150.00);
+
+        /* exibe o saldo inicial de cada objeto */
+        System.out.printf("Saldo da Conta1: R$ %.2f\n", conta1.getSaldo());
+        System.out.printf("Saldo da Conta2: R$ %.2f\n", conta2.getSaldo());
+
+        System.out.print("Digite o valor de retirada da conta1: ");
+        double qtdeRetirada1 = scanner.nextDouble(); // quantidade retirada lida a partir do usuario
+
+        // apresenta a quantidade retirada
+        System.out.printf("Subtraindo %.2f do saldo da conta1\n\n", qtdeRetirada1);
+        /* insira aqui a chamada ao método debitar do objeto conta1 enviando como parâmetro qtdeRetirada1*/
+        conta1.debitar(qtdeRetirada1);
+
+        //exibe os saldos
+        System.out.printf("Saldo da Conta1: R$ %.2f\n", conta1.getSaldo());
+        System.out.printf("Saldo da Conta2: R$ %.2f\n", conta2.getSaldo());
+
+        System.out.print("Digite o valor de retirada da conta2: ");
+        double qtdeRetirada2 = scanner.nextDouble();
+
+        // apresenta a quantidade retirada
+        System.out.printf("Subtraindo %.2f do saldo da conta1\n\n", qtdeRetirada2);
+
+        /* insira aqui a chamada ao método debito do objeto conta2 enviando como parâmetro qtdeRetirada2*/
+        conta2.debitar(qtdeRetirada2);
+        System.out.printf("Saldo da Conta1: R$ %.2f\n", conta1.getSaldo());
+        System.out.printf("Saldo da Conta2: R$ %.2f\n", conta2.getSaldo());
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Exercício 5:
+
+Classe Fatura:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class Fatura {
+    private String num, des;
+    private int qtd;
+    private double preco;
+
+    public String getNum() {
+        return num;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setNum(String num1){
+        num = num1;
+    }
+
+    public void setDes(String des1){
+        des = des1;
+    }
+
+    public void setQtd(int qtd1){
+        qtd = qtd1;
+    }
+
+    public void setPreco(double preco1){
+        preco = preco1;
+    }
+
+    public double getQtdeFatura(int qt1, double pr1){
+        return qt1 * pr1;
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Classe UsaFatura:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class UsaFatura {
+    public static void main(String[] args){
+        Fatura fatura1 = new Fatura();
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("\tEntre com o numero do produto: ");
+        String aux1 = scan.nextLine();
+        System.out.print("\n\tDescrição: ");
+        String aux2 = scan.nextLine();
+        System.out.print("\n\tQuantidade: ");
+        String aux3 = scan.nextLine();
+        int qtt = Integer.parseInt(aux3);
+        System.out.print("\n\tPreço: ");
+        String aux4 = scan.nextLine();
+        double vll = Double.parseDouble(aux4);
+        scan.close();
+
+        System.out.println();
+
+        fatura1.setNum(aux1);
+        fatura1.setDes(aux2);
+        fatura1.setQtd(qtt);
+        fatura1.setPreco(vll);
+
+        System.out.println("NUMERO: " + fatura1.getNum());
+        System.out.println("DESCRICAO: " + fatura1.getDes());
+        System.out.println("QUANTIDADE: " + fatura1.getQtd());
+        System.out.println("PREÇO: " + fatura1.getPreco());
+
+        System.out.println();
+        System.out.println("QTD * PREÇO: " + fatura1.getQtdeFatura(fatura1.getQtd(), fatura1.getPreco()));
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
